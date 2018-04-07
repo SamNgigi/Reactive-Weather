@@ -1,4 +1,5 @@
 // Default react logic was here.
+// Interesting thought.. to be successfull you have to be willing to succ first! Get it as in succ/suck.
 // Our custom logic going over what to import and why.
 
 // import the React object that lives in the 'react' package that lives in package.json

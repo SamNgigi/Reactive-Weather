@@ -16,8 +16,12 @@ class App extends React.Component {
   // Custom method to communicate with api.
   getWeather= async (event) => {
     // We prevent the default submition that occurs on is it click or submit event.
+    // It seems that this event.prevent default is indicative of single paged applications
     event.preventDefault();
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=Manchester,uk&appid=${API_KEY}&units=metric`)
+    // Grabbing the values entered into our forms.
+    const city = event.target.elements.city.value;
+    const country = event.target.elements.country.value;
+    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`)
 
     const response = await api_call.json();
 

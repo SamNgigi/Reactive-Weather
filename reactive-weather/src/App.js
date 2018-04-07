@@ -14,7 +14,9 @@ const API_KEY = "b5193b7df56e40afc55403b658e9f493";
 // We create an instance of App that is extending the React.Component object that lives in the node modules.
 class App extends React.Component {
   // Custom method to communicate with api.
-  getWeather= async () => {
+  getWeather= async (event) => {
+    // We prevent the default submition that occurs on is it click or submit event.
+    event.preventDefault();
     const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=Manchester,uk&appid=${API_KEY}&units=metric`)
 
     const response = await api_call.json();
@@ -30,7 +32,10 @@ class App extends React.Component {
       <div>
         <Titles />
         <Weather />
-        <Form />
+        {/* We use react props that are like html attributes that enable us to add functionalities to elements.
+
+        In this case we want our getWeather function to be called on submition of our form.  */}
+        <Form getWeather={this.getWeather} />
       </div>
     );
   }
